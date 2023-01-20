@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  rm-volatility-service:
+    image: 151427405638.dkr.ecr.us-west-2.amazonaws.com/rm/volatility:latest
+    container_name: rm-volatility
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - "8089:8089"
+    deploy:
+      mode: replicated
+      replicas: 1
